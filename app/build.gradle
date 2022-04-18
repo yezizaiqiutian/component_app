@@ -1,4 +1,8 @@
 apply from: "../../component_config/lib_config/base_gradle.gradle"
+//apply from: "../../component_config/lib_config/base_maven.gradle"
+
+//aarVersionName = "0.0.1"
+//aarVersionName = "0.0.1-SNAPSHOT" //发布提测包(用于测试的aar版本)
 
 android {
 
@@ -19,7 +23,23 @@ android {
 
 }
 
+afterEvaluate {
+    task publishAarAll(group: 'aar') {
+//        dependsOn getTasksByName("publish[${project.name}]PublicationTo[Remote]Repository", false)[0]
+//        doLast {
+//            println "--------------------------------------------"
+//            println "${project.name} aar上传成功"
+//            println "版本号：" + aarVersionName
+//            println "--------------------------------------------"
+//        }
+    }
+}
+
 dependencies {
+
+//    implementation 'com.android.tools.build:gradle:4.1.3'
+    implementation "com.gh.android:module_login"
+    implementation "com.gh.android:module_main"
 
     implementation "com.gh.android:lib_common"
 
